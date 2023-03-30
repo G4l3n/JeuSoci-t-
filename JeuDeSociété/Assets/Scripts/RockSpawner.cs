@@ -13,12 +13,15 @@ public class RockSpawner : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("SpawnRocks", 1, frequency);
+        if (Time.timeSinceLevelLoad < 5f)
+        {
+            InvokeRepeating("SpawnRocks", 1, frequency);
+        }
     }
     void SpawnRocks()
     {
-        Vector3 randomPos = new Vector3(transform.position.x, Random.Range(RangMin, RangMax), transform.position.z);
+            Vector3 randomPos = new Vector3(transform.position.x, Random.Range(RangMin, RangMax), transform.position.z);
 
-        Instantiate(rocks, randomPos, transform.rotation);
+            Instantiate(rocks, randomPos, transform.rotation);
     }
 }

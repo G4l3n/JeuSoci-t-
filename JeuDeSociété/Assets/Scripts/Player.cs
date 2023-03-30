@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float tapForce = 500;
+    public bool canJump = false;
+    public float tapForce;
     private Rigidbody2D playerRigidbody;
     // Start is called before the first frame update
     void Start()
@@ -15,28 +16,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canJump)
         {
-            playerRigidbody.AddForce(Vector2.up * tapForce);
+            playerRigidbody.velocity = Vector2.zero;
+            playerRigidbody.AddForce(Vector2.up * tapForce, ForceMode2D.Impulse);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "rocks")
+        if (collision.gameObject.tag == "Rocks")
         {
             Debug.Log("enter");
             Time.timeScale = 0;
             SceneManager.LoadScene("Menu");
         }
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "rocks")
-    //    {
-    //        Debug.Log("enter");
-    //        Time.timeScale = 0;
-    //        SceneManager.LoadScene("Menu");
-    //    }
-    //}
 }
