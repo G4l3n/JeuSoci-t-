@@ -21,7 +21,6 @@ public class SpawnEnemy : MonoBehaviour
 
     void Update()
     {
-        
         if (healthP.life == false || player.score == 10)
         {
             StopCoroutine(SpawnEnnemy());

@@ -11,7 +11,6 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ennemy")
         {
-            Debug.Log("collision");
             Destroy(this.gameObject);
         }
     }

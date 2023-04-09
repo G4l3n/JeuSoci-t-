@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProjectileSpawn : MonoBehaviour
 {
     public GameObject BallPrefab;
-
     public void Shoot()
     {
         StartCoroutine(SpawnProjectil());
@@ -14,8 +13,7 @@ public class ProjectileSpawn : MonoBehaviour
     {
         BallPrefab.SetActive(true);
         GameObject Ball = Instantiate(BallPrefab, this.transform.position, transform.rotation, transform);
-        Destroy(Ball, 0.5f);
+        Destroy(Ball, 0.8f);
         yield return new WaitForSeconds(1f);
     }
-
 }

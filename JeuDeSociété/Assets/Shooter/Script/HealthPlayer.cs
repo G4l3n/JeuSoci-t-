@@ -7,8 +7,9 @@ using UnityEngine;
 public class HealthPlayer : MonoBehaviour
 {
     public int health;
-    public TextMeshProUGUI Perdu;
+    public TextMeshProUGUI LoseWin;
     public TextMeshProUGUI vie;
+    public GameObject imageLoseWin;
     public bool life = true;
     void Start()
     {
@@ -28,7 +29,8 @@ public class HealthPlayer : MonoBehaviour
             if (health == 0)
             {
                 life = false;
-                Perdu.text = "Perdu !";
+                imageLoseWin.SetActive(true);
+                LoseWin.text = "Perdu !";
             }
         }
     }

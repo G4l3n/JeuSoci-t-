@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
 
     public MovePlayer player;
 
-
     void Update()
     {
         if (healthP.life)
@@ -27,14 +26,12 @@ public class Enemy : MonoBehaviour
             stop *= Time.deltaTime;
             transform.Translate(stop);
         }
-        
     }
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "PlayerProjectil")
         {
             player.destroyEnnemy = true;
-            Debug.Log("true");
             Destroy(this.gameObject);
         }
     }

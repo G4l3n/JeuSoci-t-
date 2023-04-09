@@ -18,11 +18,11 @@ public class MovePlayer : MonoBehaviour
     public HealthPlayer healthP;
 
     public TextMeshProUGUI Score;
-    public TextMeshProUGUI Win;
+    public TextMeshProUGUI LoseWin;
+    public GameObject imageLoseWin;
     public Enemy enemy;
     public int score;
     public bool destroyEnnemy = false;
-
 
     void Start()
     {
@@ -31,23 +31,32 @@ public class MovePlayer : MonoBehaviour
     }
     void Update()
     {
-        if(destroyEnnemy)
+        if (touchStart)
+        {
+            Vector2 offset = pointB - pointA;
+            Vector2 direction = Vector2.ClampMagnitude(offset, 1.0f);
+            moveCharacter(direction * 1);
+            circle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y) * 1;
+        }
+        else
+        {
+            circle.transform.position = initialPos;
+        }
+
+        if (destroyEnnemy)
         {
             score = score +1;
-            Debug.Log(score);
             if(score <= 10)
             {
                 Score.text = "Score : " + score.ToString();
             }
             destroyEnnemy = false;
         }
-
         if (Input.GetMouseButtonDown(0))
         {
             pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
             circle.transform.position = pointA * -1;
         }
-
         if (Input.GetMouseButton(0))
         {
             touchStart = true;
@@ -63,22 +72,8 @@ public class MovePlayer : MonoBehaviour
         }
         if (score == 10)
         {
-            Win.text = "Gagné !";
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (touchStart)
-        {
-            Vector2 offset = pointB - pointA;
-            Vector2 direction = Vector2.ClampMagnitude(offset, 1.0f);
-            moveCharacter(direction * 1);
-            circle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y) * 1;
-        }
-        else
-        {
-            circle.transform.position = initialPos;
+            imageLoseWin.gameObject.SetActive(true);
+            LoseWin.text = "Gagné !";
         }
     }
     void moveCharacter(Vector2 direction)
