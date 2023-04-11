@@ -1826,8 +1826,8 @@ MonoBehaviour:
   projectil: {fileID: 793802822}
   healthP: {fileID: 961449472}
   Score: {fileID: 1295789055}
-  LoseWin: {fileID: 0}
-  imageLoseWin: {fileID: 0}
+  LoseWin: {fileID: 113851764}
+  imageLoseWin: {fileID: 2035043827}
   enemy: {fileID: 677790896}
   score: 0
   destroyEnnemy: 0
