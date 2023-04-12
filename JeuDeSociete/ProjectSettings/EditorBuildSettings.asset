@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: eff75a1744dbf5a42a18d838aa4d67a2
+  - enabled: 1
     path: Assets/Scenes/SimonScene.unity
     guid: a9e7056891d2c7447bf3e17a723ad4b8
+  - enabled: 1
+    path: Assets/Scenes/MemoryScene.unity
+    guid: 053e4ef78136aa441a2929a999fafed9
+  - enabled: 1
+    path: Assets/Scenes/FlappyBird.unity
+    guid: 377ca310ca157bd4c87cab01369db1fd
+  - enabled: 1
+    path: Assets/Scenes/CinematiqueFlappyBird.unity
+    guid: 976a93ced03df434f93e1e1212a25e5d
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: d593613bc8b9279488a861c2abf870a5,
       type: 2}
