@@ -10,6 +10,7 @@ public class SimonBehaviour : MonoBehaviour
     public int simonNumber = 5;
 
     public GameObject startButton;
+    public GameObject border;
     public GameObject[] buttonsTab;
 
     private int[] sequence;
@@ -34,6 +35,7 @@ public class SimonBehaviour : MonoBehaviour
         {
             button.SetActive(false);
         }
+        border.SetActive(false);
     }
 
     public void GameStart()
@@ -127,6 +129,7 @@ public class SimonBehaviour : MonoBehaviour
     public void StartDisplay()
     {
         //Affiche et desactive les boutons + Retire le bouton start
+        border.SetActive(true);
         foreach (GameObject button in buttonsTab)
         {
             button.SetActive(true);
