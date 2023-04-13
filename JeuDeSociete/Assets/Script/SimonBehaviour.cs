@@ -209,8 +209,8 @@ public class SimonBehaviour : MonoBehaviour
         {
             button.GetComponent<Button>().interactable = false;
         }
-        startText.text = "U lose L";
-        startButton.SetActive(true);
+        SceneManager.LoadScene("Defeat");
+
         yield return new WaitForSeconds((float)2);
 
 
@@ -224,8 +224,7 @@ public class SimonBehaviour : MonoBehaviour
         {
             button.GetComponent<Button>().interactable = false;
         }
-        startText.text = "U win";
-        startButton.SetActive(true);
+        SceneManager.LoadScene("Victory");
 
         yield return new WaitForSeconds((float)2);
 

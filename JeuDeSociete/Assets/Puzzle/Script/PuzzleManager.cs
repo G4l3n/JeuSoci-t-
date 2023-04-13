@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PuzzleManager : MonoBehaviour
@@ -112,14 +113,12 @@ public class PuzzleManager : MonoBehaviour
     {
         if (tag == "Piece")
         {
-            imageLoseWin.SetActive(true);
-            LoseWin.text = "Gagné !";
+            SceneManager.LoadScene("Victory");
         }
-        
+
         if (tag != "Piece")
         {
-            imageLoseWin.SetActive(true);
-            LoseWin.text = "Perdu !";
+            SceneManager.LoadScene("Defeat");
         }
     }
 }

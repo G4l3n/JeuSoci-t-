@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
             {
                 timeRemaining = 0;
                 timerIsRunning = false;
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("Victory");
             }
         }
         if(Time.timeSinceLevelLoad > 1.5f)

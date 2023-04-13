@@ -73,8 +73,6 @@ public class MovePlayer : MonoBehaviour
         }
         if (score == 10)
         {
-            //imageLoseWin.gameObject.SetActive(true);
-            //LoseWin.text = "Gagné !";
             SceneManager.LoadScene("Victory");
         }
     }
