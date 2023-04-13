@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MemoryBehaviour : MonoBehaviour
@@ -9,16 +11,53 @@ public class MemoryBehaviour : MonoBehaviour
     public Image[] images;
     public Sprite[] sprites;
 
+    public float Timer;
+    public TextMeshProUGUI TimerText;
+    public GameObject CountdownPanel;
+    public Image CountdoundSpace;
+    public Sprite[] CountdownSprites;
+
     public int[] pressValues = { -1, -1 };
     public int[] buttonPressed = {-1, -1 };
 
     //Uses the buttonValue given by the order of the button to find its hidden value (needs to be initialized because of unoptomised code)
     private int[] valueTranslator = { 0, 0, 1, 1, 2, 2 , 3, 3, 4, 4, 5, 5};
+    private int winNumber = 0;
+    private bool timerGo = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        TimerText.gameObject.SetActive(false);
+        StartCoroutine(InitGame());
+    }
+
+    void Update()
+    {
+        if (timerGo)
+        {
+            if (Timer > 0)
+            {
+                Timer -= Time.deltaTime;
+                TimerText.SetText("" + (int)Timer);
+            }
+            else
+            {
+                Timer = 0;
+                this.timerGo = false;
+                SceneManager.LoadScene("Menu"); //Ecran défaite
+            }
+        }
+    }
+
+    public void GameStart()
+    {
         ShuffleCards();
+
+        TimerText.SetText("" + (int)Timer);
+        TimerText.gameObject.SetActive(true);
+
+        this.timerGo = true;
 
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -46,7 +85,7 @@ public class MemoryBehaviour : MonoBehaviour
     public void ButtonClick(int buttonValue)
     {
         buttons[buttonValue].gameObject.SetActive(false);
-        Debug.Log(buttonValue);
+        //Debug.Log(buttonValue);
 
         if (buttonPressed[0] == -1)
         {
@@ -65,11 +104,17 @@ public class MemoryBehaviour : MonoBehaviour
     {
         if (pressValues[0] == pressValues[1])
         {
-            Debug.Log("Pair");
+            //Debug.Log("Pair");
+            winNumber += 1;
+
+            if (winNumber == valueTranslator.Length / 2)    //6 pairs to win
+            {
+                SceneManager.LoadScene("Menu");
+            }
         }
         else
         {
-            Debug.Log("NotPair");
+            //Debug.Log("NotPair");
             StartCoroutine(FlipDelay());
         }
 
@@ -86,5 +131,30 @@ public class MemoryBehaviour : MonoBehaviour
 
         buttons[button1].gameObject.SetActive(true);
         buttons[button2].gameObject.SetActive(true);
+    }
+
+    public IEnumerator InitGame()
+    {
+        CountdoundSpace.sprite = CountdownSprites[0];
+        CountdoundSpace.SetNativeSize();
+        CountdownPanel.SetActive(true);
+        yield return new WaitForSeconds((float)0.7);
+
+        CountdoundSpace.sprite = CountdownSprites[1];
+        CountdoundSpace.SetNativeSize();
+        yield return new WaitForSeconds((float)0.7);
+
+        CountdoundSpace.sprite = CountdownSprites[2];
+        CountdoundSpace.SetNativeSize();
+        yield return new WaitForSeconds((float)0.7);
+
+        CountdoundSpace.sprite = CountdownSprites[3];
+        CountdoundSpace.SetNativeSize();
+        yield return new WaitForSeconds((float)0.7);
+
+        CountdownPanel.SetActive(false);
+        GameStart();
+
+        yield return null;
     }
 }
