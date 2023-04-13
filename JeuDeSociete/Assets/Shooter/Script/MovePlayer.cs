@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class MovePlayer : MonoBehaviour
@@ -72,8 +73,7 @@ public class MovePlayer : MonoBehaviour
         }
         if (score == 10)
         {
-            imageLoseWin.gameObject.SetActive(true);
-            LoseWin.text = "Gagné !";
+            SceneManager.LoadScene("Victory");
         }
     }
     void moveCharacter(Vector2 direction)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RandomMath : MonoBehaviour
 {
@@ -44,8 +45,10 @@ public class RandomMath : MonoBehaviour
         if (NumberRep == 3)
         {
             StopCoroutine(Counter());
-            BackroundFin.SetActive(true);
-            TextLoseWin.text = "Gagné !";
+            //BackroundFin.SetActive(true);
+            //TextLoseWin.text = "Gagné !";
+            SceneManager.LoadScene("Victory");
+
         }
     }
     void RandomCalcule()
@@ -126,8 +129,8 @@ public class RandomMath : MonoBehaviour
         }
         if (Rep1.text != Rep)
         {
-            BackroundFin.SetActive(true);
-            TextLoseWin.text = "Perdu !";
+            SceneManager.LoadScene("Defeat");
+
         }
     }
     public void Reponse2()
@@ -139,8 +142,7 @@ public class RandomMath : MonoBehaviour
         }
         if (Rep2.text != Rep)
         {
-            BackroundFin.SetActive(true);
-            TextLoseWin.text = "Perdu !";
+            SceneManager.LoadScene("Defeat");
         }
     }
     public void Reponse3()
@@ -152,8 +154,7 @@ public class RandomMath : MonoBehaviour
         }
         if (Rep3.text != Rep)
         {
-            BackroundFin.SetActive(true);
-            TextLoseWin.text = "Perdu !";
+            SceneManager.LoadScene("Defeat");
         }
     }
 
@@ -169,8 +170,7 @@ public class RandomMath : MonoBehaviour
         }
         if (counter <= 0)
         {
-            BackroundFin.SetActive(true);
-            TextLoseWin.text = "Perdu !";
+            SceneManager.LoadScene("Defeat");
         }
     }
 }

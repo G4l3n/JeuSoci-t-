@@ -20,6 +20,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CinematiqueFlappyBird.unity
     guid: 976a93ced03df434f93e1e1212a25e5d
+  - enabled: 1
+    path: Assets/Scenes/Math.unity
+    guid: b3c4d7adf1ec81c43a324fdf9bb831d9
+  - enabled: 1
+    path: Assets/Scenes/Puzzle.unity
+    guid: 006b6d81241067349a073d23d9f86e97
+  - enabled: 1
+    path: Assets/Scenes/Shooter.unity
+    guid: 22b38c29f5bd3354cb7c552e298197c7
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 44a5c7371af11944796d03b170776982
+  - enabled: 1
+    path: Assets/Scenes/Defeat.unity
+    guid: 535dbdcd92db048449dbcff81a4ca9e1
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: d593613bc8b9279488a861c2abf870a5,
       type: 2}

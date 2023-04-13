@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("enter");
             Time.timeScale = 0;
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("Defeat");
         }
     }
 }

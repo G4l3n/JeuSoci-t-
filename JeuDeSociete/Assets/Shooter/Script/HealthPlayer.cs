@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class HealthPlayer : MonoBehaviour
 {
@@ -29,8 +29,7 @@ public class HealthPlayer : MonoBehaviour
             if (health == 0)
             {
                 life = false;
-                imageLoseWin.SetActive(true);
-                LoseWin.text = "Perdu !";
+                SceneManager.LoadScene("Defeat");
             }
         }
     }
