@@ -10,12 +10,14 @@ public class SpawnEnemy : MonoBehaviour
     public float wait;
 
     public MovePlayer player;
-
     void Start()
     {
-        if (healthP.life)
+        if (player.startGame)
         {
-            Spawn();
+            if (healthP.life)
+            {
+                Spawn();
+            }
         }
     }
 

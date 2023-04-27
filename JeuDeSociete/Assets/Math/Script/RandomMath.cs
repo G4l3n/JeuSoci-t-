@@ -10,14 +10,12 @@ public class RandomMath : MonoBehaviour
     public Dictionary<string, string> dicoCalcule = new Dictionary<string, string>();
     public TextMeshProUGUI Calcule;
     public TextMeshProUGUI CounterText;
-    public TextMeshProUGUI TextLoseWin;
     public TextMeshProUGUI Rep1;
     public TextMeshProUGUI Rep2;
     public TextMeshProUGUI Rep3;
     private List<int> Reponse = new List<int> { 49, 20, 16, 58, -1, 3, 10, 26 };
-    public GameObject BackroundFin;
 
-    public int counter = 30;
+    public int counter = 20;
     public int randomCalcule;
     public string Rep;
     public int randomRep1;
@@ -26,8 +24,17 @@ public class RandomMath : MonoBehaviour
 
     public bool calculeFini;
     public int NumberRep;
+
+    //Décompte avant la partie
+    public bool startGame = false;
+    public GameObject number1;
+    public GameObject number2;
+    public GameObject number3;
+    public GameObject go;
     void Start()
     {
+        StartCoroutine(StartGame());
+
         dicoCalcule.Add("3+5*2", "13");
         dicoCalcule.Add("8*7", "56");
         dicoCalcule.Add("2x+6 = 3+x", "-3");
@@ -38,17 +45,20 @@ public class RandomMath : MonoBehaviour
     }
     void Update()
     {
-        if (calculeFini)
+        if (startGame)
         {
-            RandomCalcule();
-        }
-        if (NumberRep == 3)
-        {
-            StopCoroutine(Counter());
-            //BackroundFin.SetActive(true);
-            //TextLoseWin.text = "Gagné !";
-            SceneManager.LoadScene("Victory");
+            if (calculeFini)
+            {
+                RandomCalcule();
+            }
+            if (NumberRep == 3)
+            {
+                StopCoroutine(Counter());
+                //BackroundFin.SetActive(true);
+                //TextLoseWin.text = "Gagné !";
+                SceneManager.LoadScene("Victory");
 
+            }
         }
     }
     void RandomCalcule()
@@ -172,5 +182,23 @@ public class RandomMath : MonoBehaviour
         {
             SceneManager.LoadScene("Defeat");
         }
+    }
+
+    IEnumerator StartGame()
+    {
+        number3.SetActive(true);
+        yield return new WaitForSeconds(1);
+        number3.SetActive(false);
+        number2.SetActive(true);
+        yield return new WaitForSeconds(1);
+        number2.SetActive(false);
+        number1.SetActive(true);
+        yield return new WaitForSeconds(1);
+        number1.SetActive(false);
+        go.SetActive(true);
+        yield return new WaitForSeconds(1);
+        go.SetActive(false);
+
+        startGame = true;
     }
 }

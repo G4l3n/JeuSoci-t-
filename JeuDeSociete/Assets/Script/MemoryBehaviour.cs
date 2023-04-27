@@ -45,7 +45,7 @@ public class MemoryBehaviour : MonoBehaviour
             {
                 Timer = 0;
                 this.timerGo = false;
-                SceneManager.LoadScene("Menu"); //Ecran défaite
+                SceneManager.LoadScene("Defeat"); //Ecran défaite
             }
         }
     }
@@ -109,7 +109,7 @@ public class MemoryBehaviour : MonoBehaviour
 
             if (winNumber == valueTranslator.Length / 2)    //6 pairs to win
             {
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("Victory");
             }
         }
         else
